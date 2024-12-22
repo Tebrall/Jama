@@ -142,7 +142,7 @@ body {
   padding: 60px;
   background: linear-gradient(120deg, #fdf1cc, #ffd700);
   color: #333;
-  height: 78vh;
+  height: 88vh;
   overflow: hidden;
   position: relative;
 }
@@ -202,10 +202,13 @@ body {
 
 /* Hero Content */
 .hero-content {
+
   max-width: 50%;
   z-index: 2;
   animation: fadeInLeft 1.5s ease-out;
-
+  position: relative;
+  bottom: 90px;
+  left: 70px
 }
 
 
@@ -355,14 +358,12 @@ body {
 
 .hero-image {
   width: 180%;
-  /* Делаем изображение занимать весь контейнер */
   max-width: 1200px;
-  /* Ограничиваем максимальную ширину для больших экранов */
   height: auto;
-  /* Сохраняем пропорции */
   display: block;
+  position: relative;
+  bottom: 45px;
   transform: scale(1);
-  /* Убираем уменьшение */
   animation: floatImage 3s ease-in-out infinite;
 }
 
@@ -380,18 +381,91 @@ body {
   animation: bounce 6s infinite ease-in-out;
 }
 
-.hero-section::after {
-  content: '';
+
+.hero-thumbnails {
+  display: flex;
+  justify-content: center;
+  /* Центрирование по горизонтали */
+  gap: 15px;
+  /* Расстояние между миниатюрами */
+  list-style: none;
+  margin: 20px auto 0;
+  /* Отступ сверху и центрирование */
+  padding: 0;
   position: absolute;
-  bottom: -100px;
-  right: -100px;
-  width: 250px;
-  height: 250px;
-  background: rgba(255, 215, 0, 0.3);
-  border-radius: 50%;
-  z-index: 1;
-  animation: bounce 7s infinite ease-in-out reverse;
+  /* Фиксация */
+  bottom: 45px;
+  /* Расположение внизу */
+  left: 50%;
+  /* Центрирование относительно родителя */
+  transform: translateX(-50%);
+
+  /* Центровка */
 }
+
+.hero-thumbnails li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 180px;
+  /* Ограничение ширины */
+  max-height: 116px;
+  /* Ограничение высоты */
+  overflow: hidden;
+  border-radius: 10px;
+  /* Скругленные углы */
+  background: linear-gradient(45deg, #ff6700, #ffcc00);
+  /* Дуотоновый градиент */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Тень */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  /* Плавные эффекты */
+}
+
+.thumbnail:hover {
+  background: linear-gradient(45deg, #ffcc00, #ff6700);
+  /* Инверсия градиента при наведении */
+  box-shadow: 0 8px 15px rgba(255, 103, 0, 0.6), 0 0 20px rgba(255, 204, 0, 0.5);
+  /* Анимация свечения */
+  transform: scale(1.1);
+  /* Увеличение при наведении */
+}
+
+.hero-thumbnails img {
+  width: 190%;
+  /* Масштабируем изображение */
+  height: auto;
+  /* Сохраняем пропорции */
+  object-fit: contain;
+  /* Уменьшение без искажения */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.hero-thumbnails img:hover {
+  transform: scale(1.1);
+  /* Увеличение при наведении */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  /* Увеличенная тень */
+}
+
+/* Адаптация для мобильных экранов */
+@media (max-width: 768px) {
+  .hero-thumbnails {
+    gap: 10px;
+    /* Уменьшаем расстояние между миниатюрами */
+    bottom: 10px;
+    /* Отступ снизу для мобильных */
+  }
+
+  .hero-thumbnails li {
+    max-width: 360px;
+    /* Уменьшенная ширина для мобильных */
+    max-height: 490px;
+    /* Уменьшенная высота */
+  }
+}
+
 
 /* Animations */
 @keyframes fadeInLeft {
@@ -465,6 +539,9 @@ body {
 
   .hero-content {
     max-width: 140%;
+    position: relative;
+    left: 0px;
+    top: 10px;
   }
 
   .hero-image-container {
@@ -496,9 +573,9 @@ body {
 
   .hero-image {
     width: 200%;
-    /* Изображение растягивается по ширине */
     max-width: 700px;
-    /* Ограничиваем максимальную ширину */
+    position: relative;
+    top: 10px;
   }
 
   .btn-primary,

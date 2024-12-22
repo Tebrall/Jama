@@ -88,3 +88,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   changeText(); // Запуск функции
 });
+
+
+// Get the main hero image element
+const mainHeroImage = document.getElementById('mainHeroImage');
+
+// Get all thumbnail images
+const thumbnails = document.querySelectorAll('.thumbnail');
+
+// Add a click event listener to each thumbnail
+thumbnails.forEach((thumbnail) => {
+  thumbnail.addEventListener('click', () => {
+    // Change the src of the main hero image to the clicked thumbnail's src
+    mainHeroImage.src = thumbnail.src;
+  });
+});
